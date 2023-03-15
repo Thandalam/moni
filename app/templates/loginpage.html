@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/loginpage.css">
+    <title>SCMXpert-loginpage</title>
+</head>
+<body onload="createCaptcha()">
+    <section id="hero">
+    <div class="container">
+        <label for="nav__toggle--input" class="nav__toggle--label">
+            <span class="nav__toggle">
+                <i class="fas fa-bars"></i>
+            </span>
+        </label>
+        <input type="checkbox" name="navToggle" id="nav__toggle--input" class="nav__toggle--input">
+        <main class="main__content">
+            <header class="main--header"></header>
+            <div class="content">
+                <header>Login</header>
+                <form action="/auth/login" method="post" style="margin-top: 2rem;" onsubmit="validateCaptcha()" class="form">
+                    {% for error in errors %}
+                    <p style="color: red;background: #00000073;border-radius: 0rem;top: -1rem;position: relative;">
+                    {{ error }}</p>
+                {% endfor %}
+                    <div class="section">
+                    <span class="fa-solid fa-user"></span>
+                    <input type="text" name="login_user" required placeholder="Enter Email" required>
+                  </div>
+                  <div class="section space">
+                    <span class="fa-solid fa-lock"></span>
+                    <input
+                      type="password"
+                      class="pass"
+                      name="login_password"
+                      required
+                      placeholder="Password"
+                      />
+                    <span class="show">SHOW</span>
+                  </div>
+                  <div style="text-align: center;" class="">
+                    <div style="padding: 9px;background: linear-gradient(45deg, rgb(0 0 0 / 41%) 0%, rgb(255 255 255 / 98%) 100%);">
+                      <div id="captcha" style="background-color:rgba(213, 213, 213, 0.703);    text-align: center;"></div>
+                      <h1 style="font-size:medium " class="captcha" style="color:rgb(0, 0, 0)">Enter Captcha</h1>
+                      <button id="refreshbtn" onclick="createCaptcha()"
+                       
+                          class="fa fa-refresh"></i>
+                      </button>
+                      <input type="text" placeholder=" Enter Captcha" id="cpatchaTextBox" oninput="validateCaptcha()" required>
+                      <p class="captchaError" id="captchaError"></p>
+                    </div>
+                  </div>
+                  <div class="section" style="    top: 1rem;">
+                    <input type="submit" id="validate_login" value="LOGIN" />
+                  </div>
+                </form>
+                <a style="top: 2rem;" href="/signup">Create new account</a>
+              </div>
+
+        <!-- </main>
+        <nav class="sidebar">
+            <header class="sidebar--header">
+                <span class="avatar">
+                    <i class="fas fa-user-circle"></i>
+                </span>
+                {% if user %}
+                <section class="user__info">
+                    <h4 class="userName">{{user["Username"]}}</h4>
+                    <span class="userMail">{{user["Email"]}}</span>
+                </section>
+                {% else %}
+                <section class="user__info">
+                    <h4 class="userName">Login required</h4>
+                    <span class="userMail"></span>
+                </section>
+                {% endif %}
+            </header>
+            <ul class="navigation navigation--primary">
+                <li class="nav__item">
+                    <a href="/" class="nav__link">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/shipment" class="nav__link">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span class="text">Create Shipment</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/datastream" class="nav__link">
+                        <i class="fa-sharp fa-solid fa-network-wired"></i>
+                        <span class="text">Device Data</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/show-shipment" class="nav__link">
+                        <i class="fa-solid fa-database"></i>
+                        <span class="text">Shipments</span>
+                    </a>
+                </li>
+            </ul>
+            <hr class="decorative__line--break">
+            <ul class="navigation navigation--secondary">
+                {% if user %}
+                <li class="nav__item">
+                    <a href="/auth/logout" class="nav__link">
+                        <i class="fa fas fa-right-from-bracket"></i>
+                        <span class="text">Log Out</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav__item">
+                    <a href="/auth/login" class="nav__link">
+                        <i class="fa fas fa-right-from-bracket"></i>
+                        <span class="text">Log In</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/signup" class="nav__link">
+                        <i class="fa fas fa-right-from-bracket"></i>
+                        <span class="text">Register</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div> -->
+    </section>
+<script src="../static/js/loginpage.js"></script>
+</body>
+</html>

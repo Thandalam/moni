@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/homepage.css"> 
+    <title>SCMXpert</title>
+</head>
+<body>
+    <section id="hero">
+    <div class="container">
+        <label for="nav__toggle--input" class="nav__toggle--label">
+            <span class="nav__toggle">
+                <i class="fas fa-bars"></i>
+            </span>
+        </label>
+        <input type="checkbox" name="navToggle" id="nav__toggle--input" class="nav__toggle--input">
+        <main class="main__content">
+    
+            <header class="main--header"></header>
+            <article class="text__content" style="text-align: center;">
+                {% if user %}
+                <h1 class="section--title">Welcome to SCMxpert</h1>
+            
+                <h2 style="
+                color: #bababa;">
+                    Hi {{user["Username"]}} ! You are logged in, you can access the private
+                    pages. 
+                    <div class="center" style="text-align: center;margin-top: 2.5rem;">
+                    <a href="/shipment" style=" text-decoration: none;" class="btn-get-started">Create Shipment</a>
+                    <a href="/datastream" style=" text-decoration: none;" class="btn-get-started">Device Data</a>
+                    </div>
+                </h2>
+                {% else %}
+                <h1 id="title" class="drop-in" style="top: -9px;">SCMxpert</h1>
+                <h2>You are NOT logged in :</h2>
+                <h4>
+                    Hello stranger. You are not logged. Please follow the link to login
+                </h4>
+                <div class="center" style="text-align: center;position: relative;top: 2rem;">
+                  <a href="/auth/login" style=" text-decoration: none;" class="btn-get-started">Login</a>
+                </div>
+                {% endif %}
+            </article>
+        </main>
+    
+        <nav class="sidebar">
+            <header class="sidebar--header">
+                <span class="avatar">
+                    <i class="fas fa-user-circle"></i>
+                </span>
+                {% if user %}
+                <section class="user__info">
+                    <h5 class="userName">{{user["Username"]}}</h5>
+                    <span class="userMail">{{user["Email"]}}</span>
+                </section>
+                {% else %}
+                <section class="user__info">
+                    <h5 class="userName">Login required</h5>
+                </section>
+                {% endif %}
+            </header>
+            <ul class="navigation navigation--primary">
+                <li class="nav__item">
+                    <a href="/" class="nav__link">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/shipment" class="nav__link">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span class="text">Create Shipment</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/datastream" class="nav__link">
+                        <i class="fa-sharp fa-solid fa-network-wired"></i>
+                        <span class="text">Device Data</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/show-shipment" class="nav__link">
+                        <i class="fa-solid fa-database"></i>
+                        <span class="text">Shipments</span>
+                    </a>
+                </li>
+            </ul>
+            <hr class="decorative__line--break">
+            <ul class="navigation navigation--secondary">
+                {% if user %}
+                <li class="nav__item">
+                    <a href="/auth/logout" class="nav__link">
+                        <i class="fa fas fa-right-from-bracket"></i>
+                        <span class="text">Log Out</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav__item">
+                    <a href="/auth/login" class="nav__link">
+                        <i class="fa fas fa-right-from-bracket"></i>
+                        <span class="text">Log In</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/signup" class="nav__link">
+                        <i class="fa fas fa-right-from-bracket"></i>
+                        <span class="text">Register</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    </section>
+<script src="/static/js/homepage.js"></script>
+</body>
+</html>

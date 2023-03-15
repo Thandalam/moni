@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="../static/css/noshipmentsfound.css">
+  <title>SCMXpert</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <label for="nav__toggle--input" class="nav__toggle--label">
+        <span class="nav__toggle">
+          <i class="fas fa-bars"></i>
+        </span>
+      </label>
+      <input type="checkbox" name="navToggle" id="nav__toggle--input" class="nav__toggle--input">
+      <main class="main__content drop-in-2">
+        <div id="cardViews" style="display: grid;justify-content: center;">
+          <article class="text__content" style="text-align: center;">
+            <h2 style="margin-top: 2rem;
+                color: #bababa;">
+              Hi {{shipment_user["Username"]}} ! {{shipment}}
+              <div class="center" style="text-align: center;margin-top: 2.5rem;">
+                <a href="/shipment" style=" text-decoration: none;" class="btn-get-started">Create Shipment</a>
+              </div>
+            </h2>
+
+          </article>
+        </div>
+      </main>
+      <nav class="sidebar">
+        <header class="sidebar--header">
+          <span class="avatar">
+            <i class="fas fa-user-circle"></i>
+          </span>
+          {% if shipment_user %}
+          <section class="user__info">
+            <h4 class="userName">{{shipment_user["Username"]}}</h4>
+            <span class="userMail">{{shipment_user["Email"]}}</span>
+          </section>
+          {% else %}
+          <section class="user__info">
+            <h4 class="userName">Login required</h4>
+          </section>
+          {% endif %}
+        </header>
+        <ul class="navigation navigation--primary">
+          <li class="nav__item">
+            <a href="/" class="nav__link">
+              <i class="fa-solid fa-house"></i>
+              <span class="text">Home</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/shipment" class="nav__link">
+              <i class="fa-solid fa-truck-fast"></i>
+              <span class="text">Create Shipment</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/datastream" class="nav__link">
+              <i class="fa-sharp fa-solid fa-network-wired"></i>
+              <span class="text">Device Data</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/show-shipment" class="nav__link">
+              <i class="fa-solid fa-database"></i>
+              <span class="text">Shipments</span>
+            </a>
+          </li>
+        </ul>
+        <hr class="decorative__line--break">
+        <ul class="navigation navigation--secondary">
+          {% if user %}
+          <li class="nav__item">
+            <a href="/auth/logout" class="nav__link">
+              <i class="fa fas fa-right-from-bracket"></i>
+              <span class="text">Log Out</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav__item">
+            <a href="/auth/login" class="nav__link">
+              <i class="fa fas fa-right-from-bracket"></i>
+              <span class="text">Log In</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/signup" class="nav__link">
+              <i class="fa fas fa-right-from-bracket"></i>
+              <span class="text">Register</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </section>
+</body>
+
+</html>
